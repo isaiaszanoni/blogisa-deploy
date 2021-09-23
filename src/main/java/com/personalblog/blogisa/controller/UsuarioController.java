@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 //import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ import com.personalblog.blogisa.service.UserService;
 
 @RestController
 @RequestMapping("/usuario")
-//@CrossOrigin("*")
+@CrossOrigin("*")
 public class UsuarioController {
 	
 	@Autowired
@@ -83,8 +84,8 @@ public class UsuarioController {
     }
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<Usuario> Post(@Valid @RequestBody Usuario usuario) {
+    public ResponseEntity<Object> Post(@Valid @RequestBody Usuario usuario) {
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(userService.CadastrarUsuario(usuario));
+                .body(userService.cadastrarUsuario(usuario));
     }
 }

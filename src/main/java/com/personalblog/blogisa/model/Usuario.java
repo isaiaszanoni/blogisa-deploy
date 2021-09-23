@@ -23,22 +23,22 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idUsuario;
-	
+
 	@NotBlank
 	private String nomeUsuario;
-	
+
 	@NotBlank
 	@Email
 	private String emailUsuario;
-	
+
 	@NotBlank
 	@Size(min = 5)
 	private String senhaUsuario;
-	
+
 	@OneToMany(mappedBy = "criador", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties({"criador"})
+	@JsonIgnoreProperties({ "criador" })
 	private List<Postagem> minhasPostagens = new ArrayList<>();
-	
+
 	// Getters and Setters
 
 	public Long getIdUsuario() {
@@ -80,7 +80,5 @@ public class Usuario {
 	public void setMinhasPostagens(List<Postagem> minhasPostagens) {
 		this.minhasPostagens = minhasPostagens;
 	}
-	
-	
 
 }

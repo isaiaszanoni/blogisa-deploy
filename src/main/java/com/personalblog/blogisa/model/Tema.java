@@ -20,10 +20,10 @@ public class Tema {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTema;
-	
-	@NotNull 
+
+	@NotNull
 	private String nomeTema;
-	
+
 	@OneToMany(mappedBy = "temaRelacionado", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("temaRelacionado")
 	private List<Postagem> postagem;
@@ -42,6 +42,14 @@ public class Tema {
 
 	public void setNomeTema(String nomeTema) {
 		this.nomeTema = nomeTema;
+	}
+
+	public List<Postagem> getPostagem() {
+		return postagem;
+	}
+
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
 	}
 
 }

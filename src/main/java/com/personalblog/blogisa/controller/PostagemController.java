@@ -3,6 +3,8 @@ package com.personalblog.blogisa.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +22,8 @@ import com.personalblog.blogisa.model.Postagem;
 import com.personalblog.blogisa.repository.PostagemRepository;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/postagens")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PostagemController {
 
 	@Autowired 
@@ -53,14 +55,14 @@ public class PostagemController {
 	}
  	
 	@PostMapping("/novapostagem")
-	public ResponseEntity<Postagem> post(@RequestBody Postagem postagem){
+	public ResponseEntity<Postagem> post(@Valid @RequestBody Postagem postagem){
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(repositorio.save(postagem));
 	}
 	
 	
 	@PutMapping("/atualizapostagem")
-	public ResponseEntity<Postagem> put(@RequestBody Postagem postagem) {
+	public ResponseEntity<Postagem> put(@Valid @RequestBody Postagem postagem) {
 		return ResponseEntity.ok(repositorio.save(postagem));
 	}
 	
